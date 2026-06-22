@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food In Kitchen — Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-icon">🍳</span>
+    <div>
+      Food In Kitchen
+      <span class="brand-sub">Restaurant Dashboard · Choreography Demo</span>
+    </div>
+  </div>
+  <span class="role-badge role-restaurant">Restaurant</span>
+</header>
+
+<main>
+
+  <!-- ── No order loaded ───────────────────────────────────────────── -->
+  <div id="no-order-msg" class="portal-hint">
+    <div class="hint-text">
+      No order loaded. Open this page from the
+      <a href="customer.html" style="color:var(--clr-brand)">Customer Portal</a>
+      after placing an order — the link includes the order ID automatically.
+    </div>
+  </div>
+
+  <!-- ── Live order panel ──────────────────────────────────────────── -->
+  <section id="order-section" hidden>
+
+    <div class="card">
+      <p class="card-title">Incoming Order</p>
+
+      <!-- Ordered item (populated by JS once polling returns) -->
+      <div class="kitchen-order">
+        <div class="ko-item" id="kitchen-item">—</div>
+        <div class="ko-meta">
+          Order ID: <span id="order-id-display" style="font-family:monospace;color:var(--clr-accent)">—</span>
+        </div>
+      </div>
+
+      <div class="action-row" style="margin-top:1rem">
+        <span id="status-badge" class="status-badge status-placed">🕐 Order Placed</span>
+        <button id="btn-accept"   class="btn btn-success" hidden>✅ Accept Order</button>
+        <button id="btn-complete" class="btn btn-warning" hidden>🏁 Mark as Ready</button>
+      </div>
+    </div>
+
+    <!-- Choreography event log (same data source as customer window) -->
+    <div class="card">
+      <p class="card-title">⚡ Choreography Event Log</p>
+      <p class="log-intro">
+        The same event bus, seen from Food In Kitchen's perspective.
+        Watch entries appear simultaneously in the Customer Portal — two windows,
+        one choreography, zero shared controller.
+      </p>
+      <div class="event-log-wrap">
+        <div id="event-log" class="event-log"></div>
+      </div>
+    </div>
+
+    <div id="done-msg" class="card completed-msg" hidden>
+      <div class="big">🏁</div>
+      <p>Order marked as ready. Choreography complete!</p>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/restaurant.js"></script>
+</body>
+</html>

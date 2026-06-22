@@ -1,0 +1,26 @@
+# GCP Configuration
+# Copy this file to terraform.tfvars and fill in your values
+
+# Required: Your GCP project ID
+# Get it from: gcloud config get-value project
+project_id = "your-gcp-project-id"
+
+# Optional: GCP region (defaults to us-central1)
+# Options: us-central1, europe-west1, asia-southeast1, etc.
+region = "us-central1"
+
+# Optional: Deployment environment (defaults to dev)
+# Use: dev, staging, prod
+environment = "dev"
+
+# Optional: Team owning these resources (defaults to order-platform)
+team = "order-platform"
+
+# Optional: Cost center for billing (defaults to engineering)
+cost_center = "engineering"
+
+# Optional: SendGrid API key for email notifications
+# Get from: https://sendgrid.com/
+# Format: SG.xxxxxxxxxxxxxxxxxxxxx
+# Leave empty ("") to skip email integration
+sendgrid_api_key = ""

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food In — Order</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="brand-icon">🍔</span>
+    <div>
+      Food In
+      <span class="brand-sub">Choreography Demo</span>
+    </div>
+  </div>
+  <span class="role-badge role-customer">Customer</span>
+</header>
+
+<main>
+
+  <!-- ── Place order form ──────────────────────────────────────────── -->
+  <section id="place-section">
+
+    <div class="card">
+      <p class="card-title">New Order</p>
+
+      <!-- Fixed restaurant — no input needed -->
+      <div class="from-badge">
+        <span class="from-icon">🍳</span>
+        <div>
+          <div class="from-label">Ordering from</div>
+          <div class="from-name">Food In</div>
+        </div>
+      </div>
+
+      <!-- Single-select menu chips -->
+      <p class="menu-label">What would you like?</p>
+      <div id="chip-container" class="chips"></div>
+
+      <!-- Customer contact -->
+      <div class="field">
+        <label for="inp-email">Your email</label>
+        <input id="inp-email" type="email" value="customer@example.com" />
+      </div>
+
+      <div class="action-row">
+        <button id="btn-place" class="btn btn-brand">🛒 Place Order</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Order in progress ─────────────────────────────────────────── -->
+  <section id="order-section" hidden>
+
+    <!-- Restaurant portal link — user-initiated to avoid popup blocker -->
+    <div id="portal-hint-box" class="portal-hint">
+      <div class="hint-text">
+        <strong>Order sent to Food In Kitchen!</strong><br />
+        Open the kitchen view side-by-side to accept the order and watch both
+        windows update in real-time.
+      </div>
+      <a id="lnk-restaurant" href="restaurant.html" target="_blank" class="portal-link">
+        🍳 Food In Kitchen →
+      </a>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Your Order</p>
+
+      <p class="order-id-label">Order ID</p>
+      <p class="order-id-value" id="order-id">—</p>
+
+      <div class="action-row">
+        <span id="status-badge" class="status-badge status-placed">🕐 Order Placed</span>
+      </div>
+
+      <!-- Waiting state -->
+      <div id="waiting-msg" class="waiting-state" style="margin-top:.75rem">
+        <span class="pulse"></span>
+        <span style="color:var(--clr-muted);font-size:.875rem">
+          Waiting for Food In to accept your <strong id="ordered-item">order</strong>…
+        </span>
+      </div>
+
+      <!-- Shown once accepted -->
+      <div id="accepted-msg" hidden style="margin-top:.75rem;text-align:center;font-size:.9rem;color:var(--clr-green)">
+        👨‍🍳 Food In Kitchen has accepted your order!
+      </div>
+    </div>
+
+    <!-- Choreography event log -->
+    <div class="card">
+      <p class="card-title">⚡ Choreography Event Log</p>
+      <p class="log-intro">
+        Each row is a function that acted independently — no orchestrator told it to.
+        The story unfolds top → bottom as events flow through the bus.
+      </p>
+      <div class="event-log-wrap">
+        <div id="event-log" class="event-log"></div>
+      </div>
+    </div>
+
+    <!-- Completed -->
+    <div id="completed-section" hidden>
+      <div class="card completed-msg">
+        <div class="big">🎉</div>
+        <p>Your order from <strong style="color:var(--clr-brand)">Food In</strong> is ready!</p>
+        <p style="margin-top:.75rem">The full choreography is complete — every step driven by events, nothing by a central controller.</p>
+      </div>
+      <div class="action-row" style="justify-content:center">
+        <button id="btn-new-order" class="btn btn-ghost">+ New Order</button>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/customer.js"></script>
+</body>
+</html>
